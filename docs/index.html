@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Base · Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/docs.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="css/dropdowns.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://twitter.github.com/bootstrap/assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.png">
+
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+<a href="#"><img style="position: absolute; top: 250px; z-index: 1030; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="./index.html">Bootstrap Enhancement</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="./index.html">Dropdowns</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview">
+    <div class="container">
+        <h1>Dropdown Menus Enhancement</h1>
+
+        <p class="lead">Enhancing functionality of dropdown menus.</p>
+    </div>
+</header>
+
+
+<div class="container">
+
+<!-- Docs nav
+================================================== -->
+<div class="row">
+<div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav">
+        <li><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
+        <li><a href="#inputs"><i class="icon-chevron-right"></i> Radio and checkboxes</a></li>
+        <li><a href="#positioning"><i class="icon-chevron-right"></i> Positioning</a></li>
+        <li><a href="#bullet"><i class="icon-chevron-right"></i> Bullet</a></li>
+    </ul>
+</div>
+<div class="span9">
+
+<!-- Overview
+================================================== -->
+<section id="overview">
+    <div class="page-header">
+        <h1>Overview</h1>
+    </div>
+
+    <p>Added the following improvements:</p>
+    <ul>
+        <li>Support for radio and checkboxes</li>
+        <li>Positioning of menus</li>
+        <li>Bullet for menus</li>
+    </ul>
+
+    <p>To start using the improvements you need to include a modified <a href="#" target="_blank">dropdown.js</a> and <a href="#" target="_blank">dropdown.css</a> file.</p>
+    <p>For more information, see the examples below.</p>
+
+</section>
+
+<!-- Radio and checkboxes
+================================================== -->
+<section id="inputs">
+    <div class="page-header">
+        <h1>Radio and checkboxes</h1>
+    </div>
+
+    <h2 id="headings">Default</h2>
+
+    <p>The only thing that is required for proper operation, it is to comply with certain markup conditions. Input
+        elements should be located outside of the label and label must have the correct <code>for</code> attribute.</p>
+
+
+    <div class="bs-docs-example">
+
+        <div class="btn-toolbar form-inline" style="margin: 0;">
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn dropdown-toggle">Option1 <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><input type="radio" id="ex1_1" name="ex1" value="1" checked><label for="ex1_1">Option1</label>
+                    </li>
+                    <li><input type="radio" id="ex1_2" name="ex1" value="2"><label for="ex1_2">Option2</label></li>
+                    <li><input type="radio" id="ex1_3" name="ex1" value="3"><label for="ex1_3">Option3</label></li>
+                    <li><input type="radio" id="ex1_4" name="ex1" value="4" disabled><label for="ex1_4">I'm
+                            disabled</label></li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Please select
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><input type="checkbox" id="ex2_1" name="ex2" value="1"><label for="ex2_1">Option1</label></li>
+                    <li><input type="checkbox" id="ex2_2" name="ex2" value="2"><label for="ex2_2">Option2</label></li>
+                    <li><input type="checkbox" id="ex2_3" name="ex2" value="3"><label for="ex2_3">Option3</label></li>
+                    <li><input type="checkbox" id="ex2_4" name="ex2" value="4"><label for="ex2_4">Option4</label></li>
+                    <li><input type="checkbox" id="ex2_5" name="ex2" value="5"><label for="ex2_5">Option5</label></li>
+                </ul>
+            </div>
+            <label class="checkbox" style="margin:0 5px 0 20px">Weight: </label>
+
+            <div class="input-append">
+                <input type="text" class="span1" id="appendedInput">
+                      <span class="btn-group">
+                          <button class="btn dropdown-toggle" data-toggle="dropdown">kg <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                              <li>
+                                  <input type="radio" id="weight_unit_kg" value="kg" name="weight_unit" checked="checked"><label class="radio" for="weight_unit_kg">kg</label>
+                              </li>
+                              <li>
+                                  <input type="radio" id="weight_unit_lb" value="lb" name="weight_unit"><label class="radio" for="weight_unit_lb">lb</label>
+                              </li>
+                          </ul>
+                      </span>
+            </div>
+
+        </div>
+
+    </div>
+          <pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button data-toggle="dropdown" class="btn dropdown-toggle"&gt;Checked option &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;input type="radio" id="ID" name="NAME" value="VALUE"&gt;&lt;label for="ID"&gt;Label&lt;/label&gt;&lt;/li&gt;
+      &lt;!-- Other items --&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; 
+          </pre>
+
+
+    <hr class="bs-docs-separator">
+
+
+    <h2 id="headings">Custom placeholder</h2>
+
+    <p>Use html5 attribute <code>data-placeholder</code> to specify a default label. Uncheck checkbox in example bellow
+        to see effect.</p>
+
+
+    <div class="bs-docs-example">
+
+        <div class="btn-toolbar" style="margin: 0;">
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="Please select">
+                    Option1 <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <input type="checkbox" id="ex3_1" name="ex3" value="1" checked><label for="ex3_1">Option1</label>
+                    </li>
+                    <li><input type="checkbox" id="ex3_2" name="ex3" value="2"><label for="ex3_2">Option2</label></li>
+                    <li><input type="checkbox" id="ex3_3" name="ex3" value="3"><label for="ex3_3">Option3</label></li>
+                    <li><input type="checkbox" id="ex3_4" name="ex3" value="4"><label for="ex3_4">Option4</label></li>
+                    <li><input type="checkbox" id="ex3_5" name="ex3" value="5"><label for="ex3_5">Option5</label></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+          <pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button data-toggle="dropdown" class="btn dropdown-toggle"  data-placeholder="Please select"&gt;Checked option &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;input type="checkbox" id="ID"&gt;&lt;label for="ID" name="NAME" value="VALUE"&gt;Label&lt;/label&gt;&lt;/li&gt;
+      &lt;!-- Other items --&gt;
+    &lt;/ul&gt;
+&lt;/div&gt; 
+          </pre>
+
+    <hr class="bs-docs-separator">
+
+
+    <h2 id="headings">Label placement</h2>
+
+    <p>Using html5 attribute <code>data-label-placement</code> you can specify the container for label. See examples
+        below.</p>
+
+
+    <div class="bs-docs-example">
+
+        <div class="btn-toolbar" style="margin: 0;">
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn dropdown-toggle">City
+                    <span data-label-placement>New York</span> <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><input type="radio" id="ex4_1" name="ex4" value="1" checked><label for="ex4_1">New York</label>
+                    </li>
+                    <li><input type="radio" id="ex4_2" name="ex4" value="2"><label for="ex4_2">Moscow</label></li>
+                    <li><input type="radio" id="ex4_3" name="ex4" value="3"><label for="ex4_3">Tokyo</label></li>
+                    <li><input type="radio" id="ex4_4" name="ex4" value="4"><label for="ex4_4">Paris</label></li>
+                </ul>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" data-placeholder="Please select" data-label-placement>Please select
+                </button>
+                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><input type="checkbox" id="ex5_1" name="ex5" value="1"><label for="ex5_1">Option1</label></li>
+                    <li><input type="checkbox" id="ex5_2" name="ex5" value="2"><label for="ex5_2">Option2</label></li>
+                    <li><input type="checkbox" id="ex5_3" name="ex5" value="3"><label for="ex5_3">Option3</label></li>
+                    <li><input type="checkbox" id="ex5_4" name="ex5" value="4"><label for="ex5_4">Option4</label></li>
+                    <li><input type="checkbox" id="ex5_5" name="ex5" value="5"><label for="ex5_5">Option5</label></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+          <pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button class="btn btn-primary" data-label-placement&gt;Checked option&lt;/button&gt;
+  &lt;button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;input type="checkbox" id="ID" name="NAME" value="VALUE"&gt;&lt;label for="ID"&gt;Label&lt;/label&gt;&lt;/li&gt;
+      &lt;!-- Other items --&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+          </pre>
+
+    <hr class="bs-docs-separator">
+
+
+    <h2 id="headings">Disable label replacement</h2>
+
+    <p>Set <code>data-placeholder="false"</code> to disable label replacement. See examples below.</p>
+
+
+    <div class="bs-docs-example">
+
+        <div class="btn-toolbar" style="margin: 0;">
+            <div class="btn-group">
+                <button class="btn btn-primary">Action</button>
+                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="false">
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><input type="checkbox" id="ex6_1" name="ex6" value="1"><label for="ex6_1">Option1</label></li>
+                    <li><input type="checkbox" id="ex6_2" name="ex6" value="2"><label for="ex6_2">Option2</label></li>
+                    <li><input type="checkbox" id="ex6_3" name="ex6" value="3"><label for="ex6_3">Option3</label></li>
+                    <li><input type="checkbox" id="ex6_4" name="ex6" value="4"><label for="ex6_4">Option4</label></li>
+                    <li><input type="checkbox" id="ex6_5" name="ex6" value="5"><label for="ex6_5">Option5</label></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+          <pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button class="btn btn-primary"&gt;Checked option&lt;/button&gt;
+  &lt;button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="false"&gt;&lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;input type="checkbox" id="ID" name="NAME" value="VALUE"&gt;&lt;label for="ID"&gt;Label&lt;/label&gt;&lt;/li&gt;
+      &lt;!-- Other items --&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+          </pre>
+
+
+</section>
+
+
+<!-- positioning
+================================================== -->
+<section id="positioning">
+    <div class="page-header">
+        <h1>Positioning</h1>
+    </div>
+
+    <h2 id="headings">Usage</h2>
+
+    <p>Use extra classes to advanced positioning of dropdown menus. Classes: <code>.pull-top</code>,
+        <code>.pull-right</code></p>
+
+
+    <div class="bs-docs-example">
+        <dl class="dl-horizontal">
+            <dt></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn dropdown-toggle">Default <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.pull-right</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button class="btn btn-primary">Pull right</button>
+                    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.pull-top</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Pull top
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-top">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.pull-top.pull-right</code></dt>
+            <dd>
+                <div class="btn-group">
+                    <button class="btn btn-inverse">Pull top-right</button>
+                    <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle">
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-top pull-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+        </dl>
+        <!-- /btn-toolbar -->
+    </div>
+
+    <hr class="bs-docs-separator">
+    <h2 id="headings">Centered</h2>
+
+    <p>This classes use a small piece of javascript for correct positioning. Classes: <code>.pull-center</code>, <code>.pull-middle</code>
+    </p>
+
+    <div class="bs-docs-example">
+        <dl class="dl-horizontal">
+            <dt><code>.pull-center</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn dropdown-toggle">Center <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-center">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.pull-center.pull-top</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Center Top
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-center pull-top">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.pull-middle</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Middle
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-middle">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.pull-middle.pull-right"</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-info dropdown-toggle">Middle Right
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-middle pull-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.pull-middle.pull-center"</code></dt>
+            <dd>
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle">Middle Center
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-middle pull-center">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+        </dl>
+        <!-- /btn-toolbar -->
+    </div>
+
+
+</section>
+
+
+<!-- bullet
+================================================== -->
+<section id="bullet">
+    <div class="page-header">
+        <h1>Bullet</h1>
+    </div>
+
+    <h2 id="headings">Usage</h2>
+
+    <p>To add bullet simple add class <code>.bullet</code> to the dropdown menu,
+        <code>.pull-right</code></p>
+
+
+    <div class="bs-docs-example">
+        <dl class="dl-horizontal">
+            <dt><code>.bullet</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn dropdown-toggle">Default <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu bullet">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.bullet.pull-right</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button class="btn btn-primary">Pull right</button>
+                    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu bullet pull-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.bullet.pull-top</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Pull top
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu bullet pull-top">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.bullet.pull-top.pull-right</code></dt>
+            <dd>
+                <div class="btn-group">
+                    <button class="btn btn-inverse">Pull top-right</button>
+                    <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle">
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu bullet pull-top pull-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+        </dl>
+        <!-- /btn-toolbar -->
+    </div>
+
+    <hr class="bs-docs-separator">
+    <h2 id="headings">Centered</h2>
+
+    <div class="bs-docs-example">
+        <dl class="dl-horizontal">
+            <dt><code>.bullet.pull-center</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn dropdown-toggle">Center <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu bullet pull-center">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.bullet.pull-center.pull-top</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Center Top
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu bullet pull-center pull-top">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.bullet.pull-middle</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-danger dropdown-toggle">Middle
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu bullet pull-middle">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.bullet.pull-middle.pull-right"</code></dt>
+            <dd style="margin-bottom: 14px">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-info dropdown-toggle">Middle Right
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu bullet pull-middle pull-right">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+            <dt><code>.bullet</code> Ignored<br><code>.pull-middle.pull-center"</code></dt>
+            <dd>
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle">Middle Center
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu bullet pull-middle pull-center">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </dd>
+            <!-- /btn-group -->
+        </dl>
+        <!-- /btn-toolbar -->
+    </div>
+
+
+</section>
+
+
+</div>
+</div>
+
+</div>
+
+
+<!-- Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <p>Designed and built with all the love in the world by @me.</p>
+
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License
+                v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+
+        <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under
+            <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <ul class="footer-links">
+            <li><a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a></li>
+            <li class="muted">&middot;</li>
+            <li><a href="#">Issues</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/jquery.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-affix.js"></script>
+<script src="js/dropdown.js"></script>
+
+<script src="http://twitter.github.com/bootstrap/assets/js/holder/holder.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
+
+<script src="js/application.js"></script>
+
+
+</body>
+</html>
