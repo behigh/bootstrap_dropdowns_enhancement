@@ -227,7 +227,7 @@
         .on('click.dropdown-menu', function (e) {
             e.stopPropagation()
         })
-        .on('click.dropdown-menu', '.dropdown-menu > li > label, .dropdown-menu > li > input', function (e) {
+        .on('click.dropdown-menu', '.dropdown-menu > li > input[type="checkbox"] ~ label, .dropdown-menu > li > input[type="checkbox"], .dropdown-menu.noclose > li', function (e) {
             e.stopPropagation()
         })
         .on('change.dropdown-menu', '.dropdown-menu > li > input[type="checkbox"], .dropdown-menu > li > input[type="radio"]', Dropdown.prototype.change)
