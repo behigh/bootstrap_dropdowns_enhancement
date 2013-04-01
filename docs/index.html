@@ -123,8 +123,7 @@
                     </li>
                     <li><input type="radio" id="ex1_2" name="ex1" value="2"><label for="ex1_2">Option2</label></li>
                     <li><input type="radio" id="ex1_3" name="ex1" value="3"><label for="ex1_3">Option3</label></li>
-                    <li><input type="radio" id="ex1_4" name="ex1" value="4" disabled><label for="ex1_4">I'm
-                            disabled</label></li>
+                    <li><input type="radio" id="ex1_4" name="ex1" value="4" disabled><label for="ex1_4">I'm disabled</label></li>
                 </ul>
             </div>
 
@@ -139,8 +138,18 @@
                     <li><input type="checkbox" id="ex2_5" name="ex2" value="5"><label for="ex2_5">Option5</label></li>
                 </ul>
             </div>
+            
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-edit data-label"></i> Edit <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><input type="radio" id="ex2_2_1" name="ex2_2" value="1" checked><label for="ex2_2_1"><i class="icon-edit"></i> Edit</label></li>
+                    <li><input type="radio" id="ex2_2_2" name="ex2_2" value="2"><label for="ex2_2_2"><i class="icon-remove"></i> Remove</label></li>
+                    <li><input type="radio" id="ex2_2_3" name="ex2_2" value="3"><label for="ex2_2_3"><i class="icon-print"></i> Print</label></li>
+                </ul>
+            </div>
+            
             <label class="checkbox" style="margin:0 5px 0 20px">Weight: </label>
-
             <div class="input-append">
                 <input type="text" class="span1" id="appendedInput">
                       <span class="btn-group">
@@ -172,7 +181,6 @@
 
 
     <hr class="bs-docs-separator">
-
 
     <h2 id="headings">Custom placeholder</h2>
 
@@ -297,6 +305,36 @@
 &lt;/div&gt;
           </pre>
 
+    <hr class="bs-docs-separator">
+
+    <h2 id="headings">Custom label text</h2>
+
+    <p>Add class <code>.data-label</code> to desired element.</p>
+
+    <div class="bs-docs-example">
+
+        <div class="btn-toolbar" style="margin: 0;">
+            <div class="btn-group">
+                <button class="btn" data-label-placement><i class="icon-edit data-label"></i></button>
+                <button data-toggle="dropdown" class="btn dropdown-toggle"><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><input type="radio" id="ex7_1" name="ex7" value="1" checked><label for="ex7_1"><i class="icon-edit data-label"></i> Edit</label></li>
+                    <li><input type="radio" id="ex7_2" name="ex7" value="2"><label for="ex7_2"><i class="icon-remove data-label"></i> Remove</label></li>
+                    <li><input type="radio" id="ex7_3" name="ex7" value="3"><label for="ex7_3"><i class="icon-print data-label"></i> Print</label></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+          <pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button data-toggle="dropdown" class="btn dropdown-toggle"&gt;Checked option &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+      &lt;li&gt;&lt;input type="radio" id="ID" name="NAME" value="VALUE"&gt;&lt;label for="ID"&gt;&lt;span class="data-label"&gt;Label&lt;/span&gt; Other text&lt;/label&gt;&lt;/li&gt;
+      &lt;!-- Other items --&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+          </pre>
 
 </section>
 

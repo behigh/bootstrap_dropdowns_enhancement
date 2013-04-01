@@ -20,209 +20,218 @@
 
 !function ($) {
 
-  "use strict"; // jshint ;_;
+    "use strict"; // jshint ;_;
 
 
- /* DROPDOWN CLASS DEFINITION
-  * ========================= */
+    /* DROPDOWN CLASS DEFINITION
+     * ========================= */
 
-  var toggle = '[data-toggle=dropdown]'
-    , Dropdown = function (element) {
-        var $el = $(element).on('click.dropdown.data-api', this.toggle)
-        $('html').on('click.dropdown.data-api', function () {
-          $el.parent().removeClass('open')
-        });
-      }
+    var toggle = '[data-toggle=dropdown]'
+        , Dropdown = function (element) {
+            var $el = $(element).on('click.dropdown.data-api', this.toggle)
+            $('html').on('click.dropdown.data-api', function () {
+                $el.parent().removeClass('open')
+            });
+        }
 
-  Dropdown.prototype = {
+    Dropdown.prototype = {
 
-    constructor: Dropdown
+        constructor: Dropdown, toggle: function (e) {
+            var $this = $(this)
+                , $parent
+                , isActive
 
-  , toggle: function (e) {
-      var $this = $(this)
-        , $parent
-        , isActive
+            if ($this.is('.disabled, :disabled')) return
 
-      if ($this.is('.disabled, :disabled')) return
+            $parent = getParent($this)
 
-      $parent = getParent($this)
+            isActive = $parent.hasClass('open')
 
-      isActive = $parent.hasClass('open')
+            clearMenus()
 
-      clearMenus()
+            if (!isActive) {
+                $parent.toggleClass('open')
+                positioning($parent.find('.dropdown-menu'), $this)
+            }
 
-      if (!isActive) {
-        $parent.toggleClass('open')
-         positioning($parent.find('.dropdown-menu'), $this)
-      }
+            $this.focus()
 
-      $this.focus()
+            return false
+        }
+        , change: function (e) {
 
-      return false
-    }
-	  , change: function (e)
-	  {
+            var
+                $parent,
+                $menu,
+                $toggle,
+                selector,
+                text = '',
+                $items;
 
-		  var
-				  $parent,
-				  $menu,
-				  $toggle,
-				  selector,
-				  text = '',
-				  $items;
+            $menu = $(this).closest('.dropdown-menu');
 
-		  $menu = $(this).closest('.dropdown-menu');
+            $toggle = $menu.parent().find('[data-label-placement]');
 
-		  $toggle = $menu.parent().find('[data-label-placement]');
+            if (!$toggle || !$toggle.length) {
+                $toggle = $menu.parent().find(toggle);
+            }
 
-		  if (!$toggle || !$toggle.length)
-		  {
-			  $toggle = $menu.parent().find(toggle);
-		  }
+            if (!$toggle || !$toggle.length || $toggle.data('placeholder') === false)
+                return; // do nothing, no control
 
-		  if (!$toggle || !$toggle.length || $toggle.data('placeholder') === false)
-		  	return; // do nothing, no control
+            ($toggle.data('placeholder') == undefined && $toggle.data('placeholder', $.trim($toggle.text())));
+            text = $.data($toggle[0], 'placeholder');
 
-          ($toggle.data('placeholder') == undefined && $toggle.data('placeholder', $.trim($toggle.text())));
-		  text = $.data($toggle[0], 'placeholder');
+            $items = $menu.find('li > input:checked');
 
-		  $items = $menu.find('li > input:checked');
+            if ($items.length) {
+                text = [];
+                $items.each(function () {
+                    var str = $(this).parent().find('label').eq(0),
+                        label = str.find('.data-label');
 
-		  if ($items.length)
-		  {
-			  text = [];
-			  $items.each(function() {
-				 var str = $(this).parent().find('label').eq(0).text();
-				 str && text.push(str);
-			  });
+                    if (label.length) {
+                        var p = $('<p></p>');
+                        p.append(label.clone());
+                        str = p.html();
+                    }
+                    else {
+                        str = str.html();
+                    }
 
-			  text = text.length < 4 ? text.join(', ') : text.length + ' selected';
-		  }
 
-		  var caret = $toggle.find('.caret');
+                    str && text.push($.trim(str));
+                });
 
-		  $toggle.html(text || '&nbsp;');
-		  if (caret.length)
-		  	$toggle.append(' ') && caret.appendTo($toggle);
+                text = text.length < 4 ? text.join(', ') : text.length + ' selected';
+            }
 
-	  }
+            var caret = $toggle.find('.caret');
 
-  , keydown: function (e) {
-      var $this
-        , $items
-        , $active
-        , $parent
-        , isActive
-        , index
+            $toggle.html(text || '&nbsp;');
+            if (caret.length)
+                $toggle.append(' ') && caret.appendTo($toggle);
 
-      if (!/(38|40|27)/.test(e.keyCode)) return
+        }
+        , keydown: function (e) {
+            var $this
+                , $items
+                , $active
+                , $parent
+                , isActive
+                , index
 
-      $this = $(this)
+            if (!/(38|40|27)/.test(e.keyCode)) return
 
-      e.preventDefault()
-      e.stopPropagation()
+            $this = $(this)
 
-      if ($this.is('.disabled, :disabled')) return
+            e.preventDefault()
+            e.stopPropagation()
 
-      $parent = getParent($this)
+            if ($this.is('.disabled, :disabled')) return
 
-      isActive = $parent.hasClass('open')
+            $parent = getParent($this)
 
-      if (!isActive || (isActive && e.keyCode == 27)) {
-        if (e.which == 27) $parent.find(toggle).focus()
-        return $this.click()
-      }
+            isActive = $parent.hasClass('open')
 
-      $items = $('[role=menu] li:not(.divider):visible a, li:not(.divider):visible > input:not(disabled) ~ label', $parent)
+            if (!isActive || (isActive && e.keyCode == 27)) {
+                if (e.which == 27) $parent.find(toggle).focus()
+                return $this.click()
+            }
 
-      if (!$items.length) return
+            $items = $('[role=menu] li:not(.divider):visible a, li:not(.divider):visible > input:not(disabled) ~ label', $parent)
 
-      index = $items.index($items.filter(':focus'))
+            if (!$items.length) return
 
-      if (e.keyCode == 38 && index > 0) index--                                        // up
-      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
+            index = $items.index($items.filter(':focus'))
 
-      if (!~index) index = 0
+            if (e.keyCode == 38 && index > 0) index--                                        // up
+            if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
 
-      $items
-        .eq(index)
-        .focus()
-    }
+            if (!~index) index = 0
 
-  }
+            $items
+                .eq(index)
+                .focus()
+        }
 
-  function positioning($menu, $control)
-  {
-      if ($menu.hasClass('pull-center'))
-      {
-          $menu.css('margin-right', $menu.outerWidth() / -2);
-      }
-
-      if ($menu.hasClass('pull-middle'))
-      {
-          $menu.css('margin-top', ($menu.outerHeight() / -2) - ($control.outerHeight() / 2));
-      }
-  }
-
-  function clearMenus() {
-    $(toggle).each(function () {
-      getParent($(this)).removeClass('open')
-    })
-  }
-
-  function getParent($this) {
-    var selector = $this.attr('data-target')
-      , $parent
-
-    if (!selector) {
-      selector = $this.attr('href')
-      selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
     }
 
-    $parent = selector && $(selector)
+    function positioning($menu, $control) {
+        if ($menu.hasClass('pull-center')) {
+            $menu.css('margin-right', $menu.outerWidth() / -2);
+        }
 
-    if (!$parent || !$parent.length) $parent = $this.parent()
+        if ($menu.hasClass('pull-middle')) {
+            $menu.css('margin-top', ($menu.outerHeight() / -2) - ($control.outerHeight() / 2));
+        }
+    }
 
-    return $parent
-  }
+    function clearMenus() {
+        $(toggle).each(function () {
+            getParent($(this)).removeClass('open')
+        })
+    }
 
+    function getParent($this) {
+        var selector = $this.attr('data-target')
+            , $parent
 
-  /* DROPDOWN PLUGIN DEFINITION
-   * ========================== */
+        if (!selector) {
+            selector = $this.attr('href')
+            selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+        }
 
-  var old = $.fn.dropdown
+        $parent = selector && $(selector)
 
-  $.fn.dropdown = function (option) {
-    return this.each(function () {
-      var $this = $(this)
-        , data = $this.data('dropdown')
-      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
-      if (typeof option == 'string') data[option].call($this)
-    })
-  }
+        if (!$parent || !$parent.length) $parent = $this.parent()
 
-  $.fn.dropdown.Constructor = Dropdown
-
-
- /* DROPDOWN NO CONFLICT
-  * ==================== */
-
-  $.fn.dropdown.noConflict = function () {
-    $.fn.dropdown = old
-    return this
-  }
+        return $parent
+    }
 
 
-  /* APPLY TO STANDARD DROPDOWN ELEMENTS
-   * =================================== */
+    /* DROPDOWN PLUGIN DEFINITION
+     * ========================== */
 
-  $(document)
-    .on('click.dropdown.data-api', clearMenus)
-    .on('click.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-    .on('click.dropdown-menu', function (e) { e.stopPropagation() })
-    .on('click.dropdown-menu', '.dropdown-menu > li > label, .dropdown-menu > li > input', function (e) { e.stopPropagation() })
-    .on('change.dropdown-menu', '.dropdown-menu > li > input[type="checkbox"], .dropdown-menu > li > input[type="radio"]', Dropdown.prototype.change)
-    .on('click.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
-    .on('keydown.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
+    var old = $.fn.dropdown
+
+    $.fn.dropdown = function (option) {
+        return this.each(function () {
+            var $this = $(this)
+                , data = $this.data('dropdown')
+            if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+            if (typeof option == 'string') data[option].call($this)
+        })
+    }
+
+    $.fn.dropdown.Constructor = Dropdown
+
+
+    /* DROPDOWN NO CONFLICT
+     * ==================== */
+
+    $.fn.dropdown.noConflict = function () {
+        $.fn.dropdown = old
+        return this
+    }
+
+
+    /* APPLY TO STANDARD DROPDOWN ELEMENTS
+     * =================================== */
+
+    $(document)
+        .on('click.dropdown.data-api', clearMenus)
+        .on('click.dropdown.data-api', '.dropdown form', function (e) {
+            e.stopPropagation()
+        })
+        .on('click.dropdown-menu', function (e) {
+            e.stopPropagation()
+        })
+        .on('click.dropdown-menu', '.dropdown-menu > li > label, .dropdown-menu > li > input', function (e) {
+            e.stopPropagation()
+        })
+        .on('change.dropdown-menu', '.dropdown-menu > li > input[type="checkbox"], .dropdown-menu > li > input[type="radio"]', Dropdown.prototype.change)
+        .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+        .on('keydown.dropdown.data-api', toggle + ', [role=menu]', Dropdown.prototype.keydown)
 
 }(window.jQuery);
