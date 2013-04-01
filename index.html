@@ -182,6 +182,39 @@
 &lt;/div&gt; 
           </pre>
 
+    <hr class="bs-docs-separator">
+
+    <h2 id="headings">No Close</h2>
+
+    <p>Do not close the menu on click on radio add class <code>.noclose</code>.</p>
+
+
+    <div class="bs-docs-example">
+
+        <div class="btn-toolbar form-inline" style="margin: 0;">
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn dropdown-toggle">Option1 <span class="caret"></span></button>
+                <ul class="dropdown-menu noclose">
+                    <li><input type="radio" id="ex1_3_1" name="ex1_3" value="1" checked><label for="ex1_3_1">Option1</label></li>
+                    <li><input type="radio" id="ex1_3_2" name="ex1_3" value="2"><label for="ex1_3_2">Option2</label></li>
+                    <li><input type="radio" id="ex1_3_3" name="ex1_3" value="3"><label for="ex1_3_3">Option3</label></li>
+                    <li><input type="radio" id="ex1_3_4" name="ex1_3" value="4" disabled><label for="ex1_3_4">I'm disabled</label></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+          <pre class="prettyprint">
+&lt;div class="btn-group"&gt;
+  &lt;button data-toggle="dropdown" class="btn dropdown-toggle"&gt;Checked option &lt;span class="caret"&gt;&lt;/span&gt;&lt;/button&gt;
+    &lt;ul class="dropdown-menu noclose"&gt;
+      &lt;li&gt;&lt;input type="radio" id="ID" name="NAME" value="VALUE"&gt;&lt;label for="ID"&gt;Label&lt;/label&gt;&lt;/li&gt;
+      &lt;!-- Other items --&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+          </pre>
+
 
     <hr class="bs-docs-separator">
 
@@ -726,6 +759,7 @@
 <script src="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 
 <script src="js/application.js"></script>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -739,6 +773,5 @@
   })();
 
 </script>
-
 </body>
 </html>
