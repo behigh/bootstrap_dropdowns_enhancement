@@ -149,6 +149,8 @@
   position: absolute;
   top: -7px;
   left: 9px;
+  width: 0;
+  height: 0;
 }
 .dropdown-menu.bullet:after {
   content: '';
@@ -159,6 +161,8 @@
   position: absolute;
   top: -6px;
   left: 10px;
+  width: 0;
+  height: 0;
 }
 .dropdown-menu.bullet.pull-right:before {
   left: auto;
