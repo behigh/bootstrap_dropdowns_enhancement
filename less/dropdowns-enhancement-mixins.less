@@ -1,0 +1,30 @@
+.dropdown-menu-caret(@size; @offset; @border: @dropdown-border; @fallback-border: @dropdown-fallback-border; @bg: @dropdown-bg) {
+  margin-top: @size + 1;
+
+  .defaults() {
+    width: 0;
+    height: 0;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+    -webkit-transform:rotate(360deg); //  for a better anti-aliasing in webkit browser
+  }
+
+  &:before {
+    .defaults();
+    border-width: 0 @size @size;
+    border-bottom-color: @fallback-border;
+    border-bottom-color: @border;
+    top: -@size;
+    left: @offset;
+  }
+  &:after {
+    .defaults();
+    border-width: 0 @size - 1 @size - 1;
+    border-bottom-color: @bg;
+    top: -(@size - 1);
+    left: @offset + 1;
+  }
+}
