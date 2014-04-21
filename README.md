@@ -9,4 +9,4 @@ Added the following improvements:
 * Positioning of menus
 * Bullet for menus
 
-For demo and docs visit [http://behigh.github.io/bootstrap_dropdowns_enhancement/](hhttp://behigh.github.io/bootstrap_dropdowns_enhancement/)
+For demo and docs visit [http://behigh.github.io/bootstrap_dropdowns_enhancement/](http://behigh.github.io/bootstrap_dropdowns_enhancement/)
