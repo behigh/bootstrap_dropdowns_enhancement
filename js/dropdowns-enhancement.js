@@ -263,5 +263,12 @@
             e.stopPropagation()
         })
         .on('change' + namespace, '.dropdown-menu > li > input[type="checkbox"], .dropdown-menu > li > input[type="radio"]', proto.change)
-        .on('keydown' + namespace, toggle + ', [role="menu"], [role="listbox"]', proto.keydown)
+        .on('keydown' + namespace, toggle + ', [role="menu"], [role="listbox"]', proto.keydown);
+
+    // FIND CHECKED
+    // ============
+    $("." + menuClass).each(function(key, item){
+        $(item).find("input:checked").change();
+    });
+
 }(jQuery));
