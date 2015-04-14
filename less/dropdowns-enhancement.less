@@ -225,6 +225,12 @@
   }
 }
 
+.dropdown-scrollable {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
 .make-nested-list(@n, @i: 0) when (@i < @n) {
   > .dropdown-menu {
     > li {
