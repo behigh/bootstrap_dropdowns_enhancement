@@ -1,0 +1,16 @@
+{
+  "name": "bootstrap-dropdowns-enhancement",
+  "version": "3.1.1",
+  "main": [
+    "./dist/css/dropdowns-enhancement.css",
+    "./dist/js/dropdowns-enhancement.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "docs"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.0",
+    "bootstrap": ">= 3.1.0"
+  }
+}
