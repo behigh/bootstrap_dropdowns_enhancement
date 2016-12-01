@@ -49,8 +49,14 @@
 
             for (var i = 0, s = menuTree.length; i < s; i++) {
                 if (!menuTree[i].hasClass(openClass)) {
-                    menuTree[i].addClass(openClass);
-                    positioning(menuTree[i].children('.' + menuClass), menuTree[i]);
+
+                    var e, relatedTarget = { relatedTarget: this };
+                    $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+
+                    if (!e.isDefaultPrevented()) {
+                        menuTree[i].addClass(openClass).trigger('shown.bs.dropdown', relatedTarget);
+                        positioning(menuTree[i].children('.' + menuClass), menuTree[i]);
+                    }
                 }
             }
             opened = menuTree[0];
@@ -121,7 +127,8 @@
         if ($items.length) {
             text = [];
             $items.each(function () {
-                var str = $(this).parent().find('label').eq(0),
+                // var str = $(this).parent().find('label').eq(0),
+                var str = $(this).next(),
                     label = str.find('.data-label');
 
                 if (label.length) {
@@ -165,7 +172,8 @@
                 menuTree = [opened];
             }
 
-            var parent;
+            var parent, e;
+            var relatedTarget = { relatedTarget: menuTree };
 
             if (opened[0] !== menuTree[0][0]) {
                 parent = opened;
@@ -178,8 +186,13 @@
 
             parent.find('.' + openClass).removeClass(openClass);
 
-            if (parent.hasClass(openClass))
-                parent.removeClass(openClass);
+            if (parent.hasClass(openClass)){
+                parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+
+                if (!e.isDefaultPrevented()) {
+                    parent.removeClass(openClass).trigger('hidden.bs.dropdown', relatedTarget);
+                }
+            }                
 
             if (parent === opened) {
                 opened = null;
@@ -255,13 +268,14 @@
         return this
     };
 
-
     $(document).off(namespace)
         .on('click' + namespace, closeOpened)
         .on('click' + namespace, toggle, proto.toggle)
-        .on('click' + namespace, '.dropdown-menu > li > input[type="checkbox"] ~ label, .dropdown-menu > li > input[type="checkbox"], .dropdown-menu.noclose > li', function (e) {
+        // .on('click' + namespace, '.dropdown-menu > li > input[type="checkbox"] ~ label, .dropdown-menu > li > input[type="checkbox"], .dropdown-menu.noclose > li', function (e) {
+        .on('click' + namespace, '.dropdown-menu li input[type="checkbox"] ~ label, .dropdown-menu li input[type="checkbox"], .dropdown-menu.noclose li', function (e) {
             e.stopPropagation()
         })
-        .on('change' + namespace, '.dropdown-menu > li > input[type="checkbox"], .dropdown-menu > li > input[type="radio"]', proto.change)
+        // .on('change' + namespace, '.dropdown-menu > li > input[type="checkbox"], .dropdown-menu > li > input[type="radio"]', proto.change)
+        .on('change' + namespace, '.dropdown-menu li input[type="checkbox"], .dropdown-menu li input[type="radio"]', proto.change)
         .on('keydown' + namespace, toggle + ', [role="menu"], [role="listbox"]', proto.keydown)
 }(jQuery));
