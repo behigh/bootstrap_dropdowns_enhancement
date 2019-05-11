@@ -4,11 +4,11 @@
     "description": "Bootstrap Dropdown Menus Enhancement (Enhancing functionality of dropdown menus)",
     "dependencies": {},
     "devDependencies": {
-        "grunt": "~0.4.4",
+        "grunt": "^0.4.5",
         "grunt-contrib-clean": "~0.5.0",
-        "grunt-contrib-less": "~0.9.0",
         "grunt-contrib-copy": "~0.5.0",
-        "grunt-gh-pages": "~0.9.1",
+        "grunt-contrib-less": "~0.9.0",
+        "grunt-gh-pages": "^3.1.0",
         "load-grunt-tasks": "~0.3.0"
     },
     "scripts": {
