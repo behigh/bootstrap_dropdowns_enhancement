@@ -100,7 +100,9 @@
             $toggle,
             selector,
             text = '',
-            $items;
+            $items,
+			maxItems,
+			maxText;
 
         $menu = $(this).closest('.' + menuClass);
 
@@ -115,6 +117,13 @@
 
         ($toggle.data('placeholder') == undefined && $toggle.data('placeholder', $.trim($toggle.text())));
         text = $.data($toggle[0], 'placeholder');
+
+		maxItems = parseInt($toggle.data('maxItems'));
+		if (isNaN(maxItems)) {
+			maxItems = 3;
+		}
+
+		(!(maxText = $toggle.data('maxText')) && (maxText = '%s selected'));
 
         $items = $menu.find('li > input:checked');
 
@@ -137,7 +146,7 @@
                 str && text.push($.trim(str));
             });
 
-            text = text.length < 4 ? text.join(', ') : text.length + ' selected';
+            text = text.length > maxItems ? maxText.replace('%s', text.length) : text.join(', ');
         }
 
         var caret = $toggle.find('.caret');
