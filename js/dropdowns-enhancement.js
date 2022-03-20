@@ -44,7 +44,7 @@
 
             if (touchSupport && !$parent.closest('.navbar-nav').length && !menuTree[0].find(backdrop).length) {
                 // if mobile we use a backdrop because click events don't delegate
-                $('<div class="' + backdrop.substr(1) + '"/>').appendTo(menuTree[0]).on('click', closeOpened)
+                $('<div class="' + backdrop.slice(1) + '"/>').appendTo(menuTree[0]).on('click', closeOpened)
             }
 
             for (var i = 0, s = menuTree.length; i < s; i++) {
